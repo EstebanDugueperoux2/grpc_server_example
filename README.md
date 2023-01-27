@@ -1,29 +1,26 @@
 # GRPC example using conan
 
+```
+
+```
+
 ## Steps to create a conan package with gcc9 profile
 
 ```
-docker run --rm -ti -v ${PWD}:/home/conan/project debian:bullseye
-apt update
-apt install -y gcc g++
-apt install -y python3-pip
-pip install conan
-cd /home/conan/project
+docker run --rm -ti -v ${PWD}:/home/conan/project conanio/gcc8-ubuntu18.04
+cd project
 
-conan create . --profile:build .conan/profiles/gcc10 --profile:host .conan/profiles/gcc10 --build missing
+conan create . --profile:build .conan/profiles/gcc8 --profile:host .conan/profiles/gcc8 --build missing
 ```
 
 ## Steps to create a conan package with cross compilation
 
 ```
-docker run --rm -ti -v ${PWD}:/home/conan/project debian:bullseye
-apt update
-apt install -y gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
-apt install -y python3-pip
-pip install conan
-cd /home/conan/project
+docker run --rm -ti -v ${PWD}:/home/conan/project conanio/gcc8-ubuntu18.04
+sudo apt -y update && sudo apt install -y crossbuild-essential-armhf
+cd project
 
-conan create . --profile:build .conan/profiles/gcc10 --profile:host .conan/profiles/linux-armv7hf-gcc10 --build missing
+conan create . --profile:build .conan/profiles/gcc8 --profile:host .conan/profiles/linux-armv7hf-gcc7 --build missing
 ```
 
 Draft of issue:

@@ -16,6 +16,15 @@ class GrpcServerExampleConan(ConanFile):
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
 
+    options = {
+        "shared": [True, False],
+        "fPIC": [True, False],
+    }
+    default_options = {
+        "shared": False,
+        "fPIC": True,
+    }
+    
     requires = "grpc/1.50.1"
     # , ("zlib/1.2.12", "override")
     # requires = "grpc/1.37.0"

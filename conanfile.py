@@ -16,9 +16,11 @@ class GrpcServerExampleConan(ConanFile):
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
 
-    requires = "grpc/1.50.0", "zlib/1.2.13", "libaec/1.0.6" #zlib overriden to avoid conflict between grpc and protobuf
+    requires = "grpc/1.50.1"
+    # , ("zlib/1.2.12", "override")
+    # requires = "grpc/1.37.0"
     #"gtest/[~1.11.0]"
-    tool_requires = "cmake/3.24.2", "ninja/1.11.1", "ccache/4.6", "grpc/1.50.0", "protobuf/3.21.4"
+    tool_requires = "cmake/3.25.1", "ninja/1.11.1", "ccache/4.6", "grpc/1.50.1", "protobuf/3.21.4"
     build_policy = "missing"
 
     # Sources are located in the same place as this recipe, copy them to the recipe

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "grpc_server_example.h"
-#include <proto/address.pb.h>
-#include <proto/addressbook.grpc.pb.h>
+#include <address.pb.h>
+#include <addressbook.grpc.pb.h>
 
 #include <grpc/grpc.h>
 #include <grpcpp/server_builder.h>

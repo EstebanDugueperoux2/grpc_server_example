@@ -5,6 +5,8 @@
 #include <grpcpp/grpcpp.h>
 
 #include <address.pb.h>
+#include <addressbook.pb.h>
+#include <address.grpc.pb.h>
 #include <addressbook.grpc.pb.h>
 
 #include <grpc/grpc.h>

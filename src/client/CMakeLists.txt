@@ -1,6 +1,9 @@
 set(target client)
 
-add_executable(${target} src/main.cpp)
+find_package(protobuf REQUIRED)
+find_package(gRPC REQUIRED)
+
+add_executable(${target} route_guide_client.cpp helper.cpp)
 target_link_libraries(${target}
     PUBLIC
         proto

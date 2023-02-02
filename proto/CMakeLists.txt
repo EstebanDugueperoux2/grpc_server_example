@@ -11,8 +11,7 @@ find_package(gRPC_BUILD REQUIRED)
 set(CMAKE_CROSSCOMPILING ${CMAKE_CROSSCOMPILING_orig})
 
 set(PROTO_FILES
-    ${CMAKE_CURRENT_LIST_DIR}/proto/address.proto
-    ${CMAKE_CURRENT_LIST_DIR}/proto/addressbook.proto
+    ${CMAKE_CURRENT_LIST_DIR}/route_guide.proto
 )
 
 # See https://github.com/protocolbuffers/protobuf/blob/main/docs/cmake_protobuf_generate.md
@@ -24,7 +23,7 @@ add_library(${target} OBJECT "${PROTO_FILES}")
 target_link_libraries(${target} PUBLIC protobuf::libprotobuf gRPC::grpc++)
 
 set(PROTO_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
-set(PROTO_IMPORT_DIRS "${CMAKE_CURRENT_LIST_DIR}/proto")
+set(PROTO_IMPORT_DIRS "${CMAKE_CURRENT_LIST_DIR}")
 
 target_include_directories(${target} PUBLIC "$<BUILD_INTERFACE:${PROTO_BINARY_DIR}>")
 
@@ -36,15 +35,15 @@ protobuf_generate(TARGET ${target}
         IMPORT_DIRS ${PROTO_IMPORT_DIRS}
         PROTOC_OUT_DIR "${PROTO_BINARY_DIR}")
 
-add_executable(grpc_server_example src/grpc_server_example.cpp src/main.cpp)
-target_link_libraries(grpc_server_example
-    PUBLIC
-        ${target}
-        protobuf::libprotobuf
-        gRPC::grpc
-        gRPC::grpc++
-)
-target_include_directories(grpc_server_example PUBLIC include ${CMAKE_CURRENT_BINARY_DIR}) 
+# add_executable(grpc_server_example src/grpc_server_example.cpp src/main.cpp)
+# target_link_libraries(grpc_server_example
+#     PUBLIC
+#         ${target}
+#         protobuf::libprotobuf
+#         gRPC::grpc
+#         gRPC::grpc++
+# )
+# target_include_directories(grpc_server_example PUBLIC include ${CMAKE_CURRENT_BINARY_DIR}) 
 
 # #
 # # Compile protobuf and grpc files in myproto target to cpp
@@ -56,4 +55,4 @@ target_include_directories(grpc_server_example PUBLIC include ${CMAKE_CURRENT_BI
 # set_target_properties(grpc_server_example PROPERTIES
 #   RESOURCE "${PROTO_FILES}")
 
-install(TARGETS grpc_server_example RESOURCE DESTINATION bin)
+# install(TARGETS grpc_server_example RESOURCE DESTINATION bin)

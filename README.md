@@ -1,8 +1,6 @@
 # GRPC example using conan
 
-```
-
-```
+Inspired from https://grpc.io/docs/languages/cpp/basics/
 
 ## Steps to create a conan package with gcc8 profile
 

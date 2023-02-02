@@ -24,15 +24,6 @@ conan create . --profile:build .conan/profiles/gcc8 --profile:host .conan/profil
 ```
 
 ```
-grpc-proto/cci.20220627: Calling build()
-grpc-proto/cci.20220627: 
-grpc-proto/cci.20220627: ERROR: Package 'a7a777aaf7fbb80eead3cefb6f93d9f6a2e651b9' build failed
-grpc-proto/cci.20220627: WARN: Build folder /home/conan/.conan/data/grpc-proto/cci.20220627/_/_/build/a7a777aaf7fbb80eead3cefb6f93d9f6a2e651b9
-ERROR: grpc-proto/cci.20220627: Error in build() method, line 97
-        cmake = self._configure_cmake()
-while calling '_configure_cmake', line 63
-        cmake.definitions["GOOGLEAPIS_PROTO_DIRS"] = self.dependencies["googleapis"].cpp_info.resdirs[0].replace("\\", "/")
-        IndexError: list index out of range
 ```
 
 Get issue of https://stackoverflow.com/questions/31698241/linking-error-when-compiling-crypto-for-armhf

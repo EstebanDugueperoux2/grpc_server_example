@@ -1,12 +1,17 @@
-#include <iostream>
-#include "grpc_server_example.h"
 #include <address.pb.h>
 #include <addressbook.grpc.pb.h>
 
 #include <grpc/grpc.h>
-#include <grpcpp/server_builder.h>
 
 #include <iostream>
+#include <memory>
+#include <string>
+
+#include <grpcpp/grpcpp.h>
+
+using grpc::Channel;
+using grpc::ClientContext;
+using grpc::Status;
 
 class AddressBookService final : public expcmake::AddressBook::Service {
     public:
